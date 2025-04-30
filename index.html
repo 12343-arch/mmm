@@ -1,0 +1,1231 @@
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>جدول مذاكرة الثانوية العامة - تنظيم</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="responsive.css">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      color: #eee;
+      background: linear-gradient(145deg, #0f1331, #42275a);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff20' fill-opacity='0.1'%3E%3Cpath d='M10 0h5v5h-5zM25 5h5v5h-5zM0 20h5v5H0zM15 30h5v5h-5z'/ %3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.04;
+      z-index: 0;
+    }
+
+    header {
+      background: rgba(14, 12, 40, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header div {
+      font-family: 'Amiri', serif;
+      font-size: 1.6em;
+      color: gold;
+      text-shadow: 0 0 6px #ff0;
+    }
+
+    header nav a {
+      margin-left: 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    header nav a:hover {
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 140px 20px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      color: gold;
+      font-size: 2em;
+      text-align: center;
+      overflow: hidden;
+      border-right: .15em solid gold;
+      white-space: nowrap;
+      margin: 0 auto 20px;
+      letter-spacing: .1em;
+      animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: gold }
+    }
+
+    .description, #countdown, #search-field {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      animation: fadeInRight 1s ease;
+    }
+
+    .print-button {
+      display: block;
+      margin: 0 auto 20px;
+      background: linear-gradient(45deg, #f57c00, #fbc02d);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 25px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .print-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+
+    .print-button::before {
+      content: '🖨️ ';
+      display: inline-block;
+      animation: shake 1.5s infinite;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-5deg); }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 50px;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease;
+    }
+
+    th, td {
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 8px;
+      text-align: center;
+      position: relative;
+      color: white;
+    }
+
+    td[contenteditable="true"] {
+      background-color: rgba(255,255,255,0.05);
+    }
+
+    .period-cell.morning::before {
+      content: "☀️ ";
+    }
+
+    .period-cell.afternoon::before {
+      content: "🕐 ";
+    }
+
+    .period-cell.evening::before {
+      content: "🌙 ";
+    }
+
+    .highlight-heavy {
+      box-shadow: 0 0 8px 2px rgba(255, 0, 0, 0.5);
+    }
+
+    .done-cell {
+      background-color: #558b2f !important;
+      color: white !important;
+    }
+
+    .done-cell::after {
+      color: #fff;
+      text-shadow: 0 0 6px lime;
+    }
+
+    .friday-row td {
+      background-color: #ffab91 !important;
+    }
+
+    .friday-row td:first-child::after {
+      content: "🔥";
+    }
+
+    .review-cell {
+      background-color: #1565c0;
+    }
+
+    .review-cell::before {
+      content: "💡";
+    }
+
+    .long-session {
+      animation: blink 1s infinite;
+      outline: 1px solid lime !important;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1 }
+      50% { opacity: 0.4 }
+    }
+
+    td, .mark-done, .print-button {
+      transition: all 0.3s ease;
+    }
+
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    [data-animate].active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer Styles */
+    .site-footer {
+      background: rgba(14, 12, 40, 0.9);
+      color: #ccc;
+      text-align: center;
+      padding: 30px 15px;
+      font-size: 0.9em;
+      position: relative;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Amiri', serif;
+      font-size: 1.8em;
+      color: gold;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #ff0;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      padding: 5px 10px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .footer-links a:hover {
+      background: rgba(255,255,255,0.15);
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .footer-info {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      color: white;
+      transition: 0.3s;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    .footer-social a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
+    .error-boundary {
+      background: rgba(255, 87, 34, 0.1);
+      border: 1px solid var(--danger-color);
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      color: white;
+    }
+    
+    .reload-button {
+      background: var(--danger-color);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: linear-gradient(145deg, #121212, #2c2c2c);
+        color: #eee;
+      }
+
+      th, td {
+        border-color: rgba(255,255,255,0.1);
+      }
+
+      .print-button {
+        background: linear-gradient(45deg, #ffa000, #ffca28);
+      }
+
+      td:hover, .mark-done:hover {
+        box-shadow: 0 0 10px #ffd700;
+      }
+    }
+
+    @media print {
+      header, .print-button, footer, #countdown, #search-field {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      table {
+        page-break-inside: avoid;
+      }
+
+      tr td::after {
+        color: #000 !important;
+      }
+
+      .highlight-heavy, .pulse {
+        box-shadow: none !important;
+      }
+
+      .review-cell::before { content: "*"; }
+      .friday-row td:first-child::after { content: "!"; }
+      .done-cell::after { content: "✔"; }
+    }
+
+    .achievement-crystal {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 100px;
+      height: 200px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 10px 10px 50px 50px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .achievement-crystal-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to top, gold, #ffd700);
+      transition: height 0.5s ease;
+    }
+
+    .achievement-crystal-text {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+
+    :root {
+      --primary-color: #0f1331;
+      --secondary-color: #42275a;
+      --accent-color: gold;
+      --success-color: #4CAF50;
+      --warning-color: #FF9800;
+      --danger-color: #F44336;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    /* Payment Gateway Styles */
+    .payment-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .payment-card {
+      background: linear-gradient(145deg, #1a237e, #283593);
+      width: 90%;
+      max-width: 450px;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+    
+    .payment-logo {
+      font-family: 'Amiri', serif;
+      font-size: 2.5em;
+      color: gold;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    
+    .payment-title {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .payment-amount {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: gold;
+      margin: 15px 0;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    
+    .payment-description {
+      margin-bottom: 25px;
+      font-size: 0.95em;
+      line-height: 1.5;
+      color: #ddd;
+    }
+    
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+    
+    .payment-method {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .payment-method:hover, .payment-method.active {
+      background: rgba(255, 215, 0, 0.2);
+      transform: translateY(-3px);
+    }
+    
+    .payment-method img {
+      height: 24px;
+      width: auto;
+    }
+    
+    .payment-btn {
+      background: linear-gradient(45deg, #f57c00, #fbc02d);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+      box-shadow: 0 5px 15px rgba(245, 124, 0, 0.4);
+    }
+    
+    .payment-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(245, 124, 0, 0.6);
+    }
+    
+    .payment-btn:active {
+      transform: translateY(1px);
+    }
+    
+    .payment-info {
+      margin-top: 20px;
+      font-size: 0.85em;
+      color: #aaa;
+    }
+    
+    .payment-steps {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 15px;
+      margin: 20px 0;
+      text-align: right;
+    }
+    
+    .payment-steps h3 {
+      color: gold;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    
+    .payment-steps ol {
+      margin: 0;
+      padding-right: 20px;
+      color: #ddd;
+    }
+    
+    .payment-steps li {
+      margin-bottom: 8px;
+      font-size: 0.9em;
+    }
+    
+    .phone-number {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .payment-confirmation {
+      display: none;
+      text-align: center;
+    }
+    
+    .payment-confirmation h3 {
+      color: gold;
+      margin-bottom: 15px;
+    }
+    
+    .confirmation-code {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .code-input {
+      width: 40px;
+      height: 50px;
+      text-align: center;
+      font-size: 1.5em;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      color: white;
+    }
+    
+    .payment-success {
+      display: none;
+      text-align: center;
+    }
+    
+    .success-icon {
+      font-size: 5em;
+      color: #4CAF50;
+      margin-bottom: 15px;
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    .success-message {
+      color: white;
+      font-size: 1.2em;
+      margin-bottom: 25px;
+    }
+    
+    .access-btn {
+      background: linear-gradient(45deg, #43A047, #66BB6A);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(67, 160, 71, 0.4);
+    }
+    
+    .access-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(67, 160, 71, 0.6);
+    }
+    
+    /* Payment loading spinner */
+    .payment-loading {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border-top-color: gold;
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 15px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>جدول المذاكرة</strong></div>
+    <nav>
+      <a href="#">الرئيسية</a>
+      <a href="#">جدول المذاكرة</a>
+      <a href="#" onclick="window.print()">طباعة</a>
+      <a href="#">اتصل بي</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div id="countdown"></div>
+    <h1>جدول المذاكرة اليومي المفصل حتى امتحانات الثانوية العامة</h1>
+    <p class="description">
+      نظام مذاكرة منظم ومقسم على ثلاث فترات يومية (صباحية - بعد الظهر - مسائية) لتغطية كل المواد بكفاءة وتحقيق التفوق. يمكنك تعبئة الجدول يدويًا حسب خطة المذاكرة الخاصة بك.
+    </p>
+    <div id="search-field">
+      <input type="text" placeholder="ابحث عن مادة أو ملاحظة..." oninput="handleSearch(this.value)"/>
+    </div>
+
+    <!-- بداية نموذج إضافة يوم جديد -->
+    <form id="add-day-form" style="margin: 20px auto; max-width: 500px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; text-align: center; color: white;" onsubmit="addCustomDay(event)">
+      <h3 style="color: gold; margin-bottom: 10px;">إضافة يوم مخصص</h3>
+      <label>التاريخ: <input type="date" id="custom-date" required style="padding: 5px; margin: 10px; border-radius: 5px; border: none;" /></label><br/>
+      <label>المادة: <input type="text" id="custom-subject" required placeholder="مثال: رياضيات" style="padding: 5px; margin: 10px; border-radius: 5px; border: none;" /></label><br/>
+      <label>الفترة: 
+        <select id="custom-period" required style="padding: 5px; margin: 10px; border-radius: 5px;">
+          <option value="morning">صباحية</option>
+          <option value="afternoon">بعد الظهر</option>
+          <option value="evening">مسائية</option>
+        </select>
+      </label><br/>
+      <label>من الساعة: <input type="time" id="custom-from" required style="padding: 5px; margin: 10px; border-radius: 5px;" /></label>
+      <label>إلى الساعة: <input type="time" id="custom-to" required style="padding: 5px; margin: 10px; border-radius: 5px;" /></label><br/>
+      <label>التفاصيل: <input type="text" id="custom-task" placeholder="مثال: حل تمرينات" style="padding: 5px; margin: 10px; border-radius: 5px;" /></label><br/>
+      <button type="submit" class="print-button" style="margin-top: 10px;">إضافة اليوم</button>
+    </form>
+    <!-- نهاية النموذج -->
+
+    <button class="print-button" onclick="window.print()">طباعة الجدول</button>
+
+    <table id="study-table">
+      <thead>
+        <tr>
+          <th>اليوم</th>
+          <th>التاريخ</th>
+          <th>الفترة</th>
+          <th>من الساعة</th>
+          <th>إلى الساعة</th>
+          <th>المادة</th>
+          <th>المهمة / التفاصيل</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="achievement-crystal">
+    <div class="achievement-crystal-text">الإنجاز</div>
+    <div class="achievement-crystal-fill" id="achievement-fill"></div>
+  </div>
+
+  <div class="achievements-section">
+    <h2>الإنجازات والمكافآت</h2>
+    <div id="achievements-container" class="achievements-grid">
+      <!-- Achievements will be dynamically added here -->
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">تنظيم</div>
+      <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="contact.html">اتصل بنا</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">الشروط والأحكام</a>
+        <a href="acceptable-use.html">سياسة الاستخدام المقبول</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" title="Facebook">FB</a>
+        <a href="#" title="Twitter/X">X</a>
+        <a href="#" title="Instagram">IG</a>
+        <a href="#" title="YouTube">YT</a>
+      </div>
+      <div class="footer-info">
+        &copy; 2025 تنظيم. جميع الحقوق محفوظة.
+      </div>
+    </div>
+    <div class="footer-stars"></div>
+  </footer>
+
+  <div id="error-boundary"></div>
+
+  <!-- Payment Gateway Overlay -->
+  <div class="payment-overlay" id="paymentOverlay">
+    <div class="payment-card">
+      <div class="payment-main">
+        <div class="payment-logo">تنظيم</div>
+        <h2 class="payment-title">اشتراك للوصول إلى المحتوى</h2>
+        <div class="payment-amount">2 جنيه فقط</div>
+        <p class="payment-description">
+          للوصول إلى جداول المذاكرة وأدوات التنظيم المتقدمة، برجاء دفع رسوم الاشتراك الرمزية (مرة واحدة).
+        </p>
+        
+        <div class="payment-methods">
+          <div class="payment-method active" data-method="vodafone">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#e60000">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+              <circle cx="12" cy="12" r="5" fill="#e60000"></circle>
+            </svg>
+            فودافون كاش
+          </div>
+          <div class="payment-method" data-method="orange">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FF6600">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+              <circle cx="12" cy="12" r="5" fill="#FF6600"></circle>
+            </svg>
+            أورانج كاش
+          </div>
+          <div class="payment-method" data-method="etisalat">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#6C0">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+              <circle cx="12" cy="12" r="5" fill="#6C0"></circle>
+            </svg>
+            اتصالات كاش
+          </div>
+        </div>
+        
+        <div class="payment-steps">
+          <h3>خطوات الدفع:</h3>
+          <ol>
+            <li>قم بتحويل 2 جنيه على رقم: <span class="phone-number">01140427665</span></li>
+            <li>انتظر رسالة التأكيد من فودافون كاش</li>
+            <li>اضغط زر "تأكيد الدفع" أدناه</li>
+          </ol>
+        </div>
+        
+        <button class="payment-btn" id="confirmPaymentBtn">تأكيد الدفع</button>
+        
+        <div class="payment-info">
+          عملية الدفع آمنة 100% وتتم مرة واحدة فقط للوصول إلى المحتوى الكامل
+        </div>
+      </div>
+      
+      <!-- Payment loading state -->
+      <div class="payment-loading" id="paymentLoading">
+        <div class="spinner"></div>
+        <p>جاري التحقق من الدفع...</p>
+      </div>
+      
+      <!-- Payment Confirmation Screen -->
+      <div class="payment-confirmation" id="paymentConfirmation">
+        <h3>تأكيد الدفع</h3>
+        <p>برجاء إدخال رمز التأكيد المرسل إلى هاتفك:</p>
+        
+        <div class="confirmation-code">
+          <input type="text" maxlength="1" class="code-input" id="code1">
+          <input type="text" maxlength="1" class="code-input" id="code2">
+          <input type="text" maxlength="1" class="code-input" id="code3">
+          <input type="text" maxlength="1" class="code-input" id="code4">
+        </div>
+        
+        <button class="payment-btn" id="verifyCodeBtn">تأكيد الرمز</button>
+      </div>
+      
+      <!-- Payment Success Screen -->
+      <div class="payment-success" id="paymentSuccess">
+        <div class="success-icon">✓</div>
+        <h3 class="success-message">تم الدفع بنجاح!</h3>
+        <p>شكراً لك! يمكنك الآن الوصول إلى كامل محتوى الموقع.</p>
+        <button class="access-btn" id="accessContentBtn">الدخول إلى المحتوى</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tbody = document.querySelector("#study-table tbody");
+    const startDate = new Date();
+    const endDate = new Date('2024-06-22');
+    const periods = [
+      { name: 'صباحية', from: '8:00 ص', to: '11:00 ص', class: 'morning' },
+      { name: 'بعد الظهر', from: '1:00 م', to: '4:00 م', class: 'afternoon' },
+      { name: 'مسائية', from: '6:00 م', to: '9:00 م', class: 'evening' },
+    ];
+    const heavySubjects = ['فيزياء', 'كيمياء', 'أحياء'];
+    const reviewKeywords = ['مراجعة', 'تجميع'];
+
+    // Countdown
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      document.getElementById("countdown").textContent = `متبقي ${days} يوم على الامتحان النهائي!`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000 * 60 * 60); // update hourly
+
+    function markDone(button) {
+      const cell = button.parentElement;
+      cell.classList.add('done-cell');
+      button.remove();
+
+      const row = cell.parentElement;
+      const date = row.children[1].textContent;
+      const dayRows = Array.from(document.querySelectorAll('#study-table tbody tr'))
+        .filter(tr => tr.children.length >= 2 && tr.children[1] && tr.children[1].textContent === date);
+
+      const allDone = dayRows.every(r => {
+        const lastCell = r.children[6];
+        return lastCell && lastCell.querySelector('.mark-done') === null;
+      });
+
+      if (allDone) {
+        dayRows.forEach(r => {
+          r.classList.add("done-day");
+          r.setAttribute('data-date', date);  
+        });
+      }
+
+      updateAchievementCrystal();
+    }
+
+    function handleSearch(value) {
+      const rows = tbody.querySelectorAll("tr");
+      rows.forEach(row => {
+        const text = row.innerText;
+        row.style.display = text.includes(value) ? "" : "none";
+      });
+    }
+
+    const tooltips = [
+      "جلسة تركيز عالي – فيزياء",
+      "محتاج أراجع تاني",
+      "حل امتحان سابق",
+      "مذاكرة خفيفة",
+      "تجميع متراكم",
+      "مراجعة نهائية"
+    ];
+
+    const tooltipGenerator = (() => {
+      let index = 0;
+      return () => tooltips[(index++) % tooltips.length];
+    })();
+
+    while (startDate <= endDate) {
+      const currentDate = new Date(startDate);
+      const dateStr = currentDate.toLocaleDateString('ar-EG');
+      const dayStr = currentDate.toLocaleDateString('ar-EG', { weekday: 'long' });
+      const isFriday = currentDate.getDay() === 5;
+
+      for (let i = 0; i < periods.length; i++) {
+        const period = periods[i];
+        const tr = document.createElement("tr");
+
+        if (isFriday) tr.classList.add("friday-row");
+
+        const dayCell = document.createElement("td");
+        dayCell.textContent = dayStr;
+
+        const dateCell = document.createElement("td");
+        dateCell.textContent = dateStr;
+
+        const periodCell = document.createElement("td");
+        periodCell.textContent = period.name;
+        periodCell.classList.add('period-cell', period.class);
+        if (i === 0) tr.classList.add("pulse");
+
+        const fromCell = document.createElement("td");
+        fromCell.textContent = period.from;
+        const toCell = document.createElement("td");
+        toCell.textContent = period.to;
+
+        const subjectCell = document.createElement("td");
+        subjectCell.contentEditable = "true";
+        const taskCell = document.createElement("td");
+        taskCell.contentEditable = "true";
+
+        const note = document.createElement("div");
+        note.className = "tooltip";
+        note.textContent = tooltipGenerator();
+        taskCell.appendChild(note);
+
+        const btn = document.createElement("button");
+        btn.className = "mark-done";
+        btn.textContent = "تحديد تم";
+        btn.onclick = () => markDone(btn);
+        taskCell.appendChild(btn);
+
+        subjectCell.addEventListener("input", () => {
+          const txt = subjectCell.textContent;
+          if (heavySubjects.some(s => txt.includes(s))) {
+            subjectCell.classList.add("highlight-heavy");
+          } else {
+            subjectCell.classList.remove("highlight-heavy");
+          }
+
+          if (reviewKeywords.some(s => txt.includes(s))) {
+            subjectCell.classList.add("review-cell");
+          } else {
+            subjectCell.classList.remove("review-cell");
+          }
+        });
+
+        tr.appendChild(dayCell);
+        tr.appendChild(dateCell);
+        tr.appendChild(periodCell);
+        tr.appendChild(fromCell);
+        tr.appendChild(toCell);
+        tr.appendChild(subjectCell);
+        tr.appendChild(taskCell);
+
+        tbody.appendChild(tr);
+      }
+
+      const ratingRow = document.createElement("tr");
+      const ratingCell = document.createElement("td");
+      ratingCell.colSpan = 7;
+      ratingCell.innerHTML = '<strong>تقييم اليوم:</strong> <input type="text" placeholder="أنجزت كام ساعة؟ إيه اللي محتاج أراجعه؟" style="width: 80%; padding: 5px;">';
+      tbody.appendChild(ratingRow);
+      ratingRow.appendChild(ratingCell);
+
+      startDate.setDate(startDate.getDate() + 1);
+    }
+
+    // Enable drag and drop
+    let dragSrcEl = null;
+    document.querySelectorAll('#study-table tbody').forEach(tbodyEl => {
+      tbodyEl.addEventListener('dragstart', (e) => {
+        dragSrcEl = e.target;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', e.target.outerHTML);
+      });
+
+      tbodyEl.addEventListener('dragover', (e) => {
+        if (e.preventDefault) e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        return false;
+      });
+
+      tbodyEl.addEventListener('drop', (e) => {
+        if (e.stopPropagation) e.stopPropagation();
+        if (dragSrcEl != e.target && e.target.tagName === "TR") {
+          const tmp = document.createElement("tbody");
+          tmp.innerHTML = e.dataTransfer.getData('text/html');
+          tbodyEl.insertBefore(tmp.firstChild, e.target);
+          dragSrcEl.parentNode.removeChild(dragSrcEl);
+        }
+        return false;
+      });
+    });
+
+    document.querySelectorAll('#study-table tr').forEach(row => {
+      row.draggable = true;
+    });
+
+    // Animate on scroll
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Add class to mark long sessions
+    document.querySelectorAll("#study-table tbody tr").forEach(row => {
+      const cell = row.querySelector("td:nth-child(5)");
+      if (cell && cell.textContent && cell.textContent.includes("9:00")) {
+        row.classList.add("long-session");
+      }
+    });
+
+    // Dynamic quote
+    const quotes = [
+      "ابدأ يومك بحماس ",
+      "كل خطوة تقربك لهدفك ",
+      "مفيش مستحيل ",
+      "ركز وخليك ثابت ",
+      "أنت قدها دائمًا "
+    ];
+    document.getElementById("daily-quote").textContent = quotes[new Date().getDate()%quotes.length];
+
+    // Achievement Crystal Tracking
+    function updateAchievementCrystal() {
+      const totalDays = document.querySelectorAll('#study-table tbody tr[data-date]');
+      const completedDays = document.querySelectorAll('#study-table tbody tr.done-day');
+
+      const achievementPercentage = (completedDays.length / totalDays.length) * 100;
+
+      const crystalFill = document.getElementById('achievement-fill');
+      if (crystalFill) {
+        crystalFill.style.height = `${achievementPercentage}%`;
+      }
+    }
+
+    // Initialize achievement crystal when page loads
+    document.addEventListener('DOMContentLoaded', updateAchievementCrystal);
+
+    // Global error handler
+    window.addEventListener('error', (event) => {
+      const errorBoundary = document.getElementById("error-boundary");
+      const message = event.message ? event.message : 'حدث خطأ غير متوقع';
+      errorBoundary.innerHTML = `
+        <div class="error-boundary">
+          <h3>يبدو أن الموقع قد واجه مشكلة</h3>
+          <p>${message}</p>
+          <button class="reload-button" onclick="window.location.reload()">إعادة تحميل</button>
+        </div>
+      `;
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      try { 
+        window.system = new XPSystem();
+        window.achievementSystem = new AchievementSystem();
+        window.rewardSystem = new RewardSystem();
+        window.achievementPanel = new AchievementPanel();
+        window.studyJournal = new StudyJournal();
+        window.moodTracker = new MoodTracker();
+        window.pomodoroTimer = new PomodoroTimer();
+        window.focusRoom = new FocusRoom();
+      } catch (error) {
+        console.error(`Failed to initialize: ${error}`);
+      }
+    });
+
+    if ('serviceWorker' in window) {
+      navigator.serviceWorker.register('/sw.js').then(registration => {
+        console.log('Service worker registered:', registration);
+      }).catch(error => {
+        console.error('Failed to register service worker:', error);
+      });
+    }
+  </script>
+  <script>
+    // Add payment gateway logic
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if user has already paid
+      const hasPaid = localStorage.getItem('hasPaid');
+      
+      if (hasPaid) {
+        document.getElementById('paymentOverlay').style.display = 'none';
+      }
+      
+      // Payment method selection
+      const paymentMethods = document.querySelectorAll('.payment-method');
+      paymentMethods.forEach(method => {
+        method.addEventListener('click', function() {
+          // Remove active class from all
+          paymentMethods.forEach(m => m.classList.remove('active'));
+          // Add active class to selected
+          this.classList.add('active');
+          
+          // Update payment steps based on selected method
+          const methodName = this.dataset.method;
+          let methodText = 'فودافون كاش';
+          
+          if (methodName === 'orange') {
+            methodText = 'أورانج كاش';
+          } else if (methodName === 'etisalat') {
+            methodText = 'اتصالات كاش';
+          }
+          
+          document.querySelector('.payment-steps ol li:first-child').textContent = 
+            `قم بتحويل 2 جنيه على رقم: `;
+            
+          document.querySelector('.payment-steps ol li:first-child').innerHTML = 
+            `قم بتحويل 2 جنيه على رقم: <span class="phone-number">01140427665</span> عبر ${methodText}`;
+          
+          document.querySelector('.payment-steps ol li:nth-child(2)').textContent = 
+            `انتظر رسالة التأكيد من ${methodText}`;
+        });
+      });
+      
+      // Confirm payment button
+      document.getElementById('confirmPaymentBtn').addEventListener('click', function() {
+        // Hide main payment screen
+        document.querySelector('.payment-main').style.display = 'none';
+        
+        // Show loading
+        document.getElementById('paymentLoading').style.display = 'flex';
+        
+        // Simulate payment verification (in a real system, this would verify with backend)
+        setTimeout(() => {
+          // Hide loading
+          document.getElementById('paymentLoading').style.display = 'none';
+          
+          // Show confirmation screen
+          document.getElementById('paymentConfirmation').style.display = 'block';
+          
+          // Focus first code input
+          document.getElementById('code1').focus();
+        }, 2000);
+      });
+      
+      // Code input logic
+      const codeInputs = document.querySelectorAll('.code-input');
+      codeInputs.forEach((input, index) => {
+        // Auto-focus next input when typing
+        input.addEventListener('input', function() {
+          if (this.value.length === 1 && index < codeInputs.length - 1) {
+            codeInputs[index + 1].focus();
+          }
+        });
+        
+        // Handle backspace
+        input.addEventListener('keydown', function(e) {
+          if (e.key === 'Backspace' && !this.value && index > 0) {
+            codeInputs[index - 1].focus();
+          }
+        });
+      });
+      
+      // Verify code button
+      document.getElementById('verifyCodeBtn').addEventListener('click', function() {
+        // Get entered code
+        let enteredCode = '';
+        codeInputs.forEach(input => {
+          enteredCode += input.value;
+        });
+        
+        // In a real system, this would verify the code with backend
+        // For demo, we accept any 4-digit code
+        if (enteredCode.length === 4) {
+          // Hide confirmation screen
+          document.getElementById('paymentConfirmation').style.display = 'none';
+          
+          // Show loading
+          document.getElementById('paymentLoading').style.display = 'flex';
+          
+          // Simulate verification
+          setTimeout(() => {
+            // Hide loading
+            document.getElementById('paymentLoading').style.display = 'none';
+            
+            // Show success screen
+            document.getElementById('paymentSuccess').style.display = 'block';
+            
+            // Save payment state
+            localStorage.setItem('hasPaid', 'true');
+          }, 1500);
+        } else {
+          alert('الرجاء إدخال رمز صحيح مكون من 4 أرقام');
+        }
+      });
+      
+      // Access content button
+      document.getElementById('accessContentBtn').addEventListener('click', function() {
+        // Hide payment overlay
+        document.getElementById('paymentOverlay').style.display = 'none';
+      });
+    });
+  </script>
+  <script src="achievements.js"></script>
+  <script src="add-multiple-days.js"></script>
+  <script src="responsive.js"></script>
+  <script src="achievement-crystal.js"></script>
+  <script src="xp-system.js"></script>
+  <script src="achievement-panel.js"></script>
+  <script src="rewards.js"></script>
+  <script src="pomodoro-timer.js"></script>
+  <script src="mood-tracker.js"></script>
+  <script src="study-journal.js"></script>
+  <script src="focus-room.js"></script>
+  <link rel="manifest" href="/manifest.webmanifest">
+</body>
+</html>

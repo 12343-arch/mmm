@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>سياسة الاستخدام المقبول - تنظيم</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="responsive.css">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      color: #eee;
+      background: linear-gradient(145deg, #0f1331, #42275a);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff20' fill-opacity='0.1'%3E%3Cpath d='M10 0h5v5h-5zM25 5h5v5h-5zM0 20h5v5H0zM15 30h5v5h-5z'/ %3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.04;
+      z-index: 0;
+    }
+
+    header {
+      background: rgba(14, 12, 40, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header div {
+      font-family: 'Amiri', serif;
+      font-size: 1.6em;
+      color: gold;
+      text-shadow: 0 0 6px #ff0;
+    }
+
+    header nav a {
+      margin-left: 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    header nav a:hover {
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .page-title {
+      color: gold;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .page-title::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: gold;
+      margin: 10px auto;
+      border-radius: 3px;
+    }
+
+    .policy-section {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      padding: 30px;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .policy-section h2 {
+      color: #fff;
+      margin-top: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+    }
+
+    .policy-section p {
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .policy-section h3 {
+      color: gold;
+      margin-top: 30px;
+    }
+
+    .policy-section ul, .policy-section ol {
+      padding-right: 20px;
+      line-height: 1.7;
+    }
+
+    .policy-section li {
+      margin-bottom: 10px;
+    }
+
+    .prohibited-item {
+      background: rgba(255, 0, 0, 0.05);
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      border-right: 3px solid rgba(255, 0, 0, 0.3);
+    }
+
+    .allowed-item {
+      background: rgba(0, 255, 0, 0.05);
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      border-right: 3px solid rgba(0, 255, 0, 0.3);
+    }
+
+    .update-date {
+      text-align: center;
+      margin-top: 40px;
+      color: #aaa;
+      font-style: italic;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer Styles */
+    .site-footer {
+      background: rgba(14, 12, 40, 0.9);
+      color: #ccc;
+      text-align: center;
+      padding: 30px 15px;
+      font-size: 0.9em;
+      position: relative;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Amiri', serif;
+      font-size: 1.8em;
+      color: gold;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #ff0;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      padding: 5px 10px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .footer-links a:hover {
+      background: rgba(255,255,255,0.15);
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .footer-info {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      color: white;
+      transition: 0.3s;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    .footer-social a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 15px;
+      }
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>تنظيم</strong></div>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">اتصل بنا</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1 class="page-title">سياسة الاستخدام المقبول</h1>
+    
+    <div class="policy-section">
+      <h2>مرحباً بك في سياسة الاستخدام المقبول لموقع "تنظيم"</h2>
+      <p>
+        تحدد هذه السياسة القواعد والإرشادات المتعلقة باستخدام موقع "تنظيم"، بما في ذلك ما هو مسموح وما هو
+        غير مسموح به على منصتنا. هدفنا هو خلق بيئة آمنة ومحترمة وإيجابية لجميع المستخدمين.
+      </p>
+      <p>
+        باستخدامك للموقع، فإنك توافق على الالتزام بهذه السياسة. قد يؤدي انتهاك هذه السياسة إلى تقييد
+        وصولك إلى الموقع أو إنهائه.
+      </p>
+      
+      <h3>الاستخدامات المسموح بها</h3>
+      <p>أنت مرحب بك لاستخدام موقع "تنظيم" للأغراض التالية:</p>
+      <div class="allowed-items">
+        <div class="allowed-item">
+          <strong>التعلم والدراسة:</strong> استخدام الموقع لإنشاء وتنظيم جداول المذاكرة واستخدام الأدوات والميزات المتاحة لتحسين مهارات الدراسة.
+        </div>
+        <div class="allowed-item">
+          <strong>المشاركة البناءة:</strong> طرح أسئلة وتقديم اقتراحات وملاحظات بشكل بناء.
+        </div>
+        <div class="allowed-item">
+          <strong>مشاركة المعرفة:</strong> مشاركة تجاربك وأفكارك وإستراتيجيات الدراسة الفعالة مع مستخدمين آخرين بطريقة إيجابية ومحترمة.
+        </div>
+        <div class="allowed-item">
+          <strong>استخدام شخصي:</strong> تنزيل أو طباعة نسخ من المحتوى المتاح للاستخدام الشخصي غير التجاري.
+        </div>
+      </div>
+      
+      <h3>الاستخدامات المحظورة</h3>
+      <p>لا يُسمح باستخدام موقع "تنظيم" للأغراض التالية:</p>
+      <div class="prohibited-items">
+        <div class="prohibited-item">
+          <strong>المحتوى غير القانوني:</strong> استخدام الموقع لنشر أو تبادل أي محتوى غير قانوني.
+        </div>
+        <div class="prohibited-item">
+          <strong>المحتوى الضار:</strong> نشر أي محتوى يحتوي على فيروسات أو برامج ضارة أو أي رمز آخر مصمم للتسبب في ضرر أو إعاقة أي نظام كمبيوتر أو برنامج.
+        </div>
+        <div class="prohibited-item">
+          <strong>المحتوى المسيء:</strong> نشر محتوى مسيء أو تهديدي أو تحريضي أو عنصري أو تمييزي أو تشهيري أو فاحش.
+        </div>
+        <div class="prohibited-item">
+          <strong>السرقة الأدبية:</strong> انتهاك حقوق الملكية الفكرية للآخرين، بما في ذلك حقوق النشر والعلامات التجارية.
+        </div>
+        <div class="prohibited-item">
+          <strong>جمع البيانات:</strong> استخدام أنظمة آلية (مثل الروبوتات أو العناكب) لجمع البيانات من الموقع دون موافقة صريحة منا.
+        </div>
+        <div class="prohibited-item">
+          <strong>الإعلانات والرسائل غير المرغوب فيها:</strong> نشر أي نوع من الإعلانات أو المواد الترويجية أو الرسائل غير المرغوب فيها.
+        </div>
+        <div class="prohibited-item">
+          <strong>انتحال الهوية:</strong> انتحال هوية أي شخص أو كيان، أو تحريف علاقتك بأي شخص أو كيان.
+        </div>
+        <div class="prohibited-item">
+          <strong>التحايل على القيود:</strong> محاولة الوصول إلى أجزاء مقيدة من الموقع أو التحايل على أي تدابير أمنية.
+        </div>
+      </div>
+      
+      <h3>محتوى المستخدم</h3>
+      <p>
+        قد يوفر موقعنا ميزات تسمح للمستخدمين بنشر محتوى مثل التعليقات أو الردود. بنشر أي محتوى على موقعنا، فإنك:
+      </p>
+      <ul>
+        <li>تضمن أنك تمتلك جميع الحقوق اللازمة لنشر هذا المحتوى.</li>
+        <li>تمنحنا ترخيصًا عالميًا غير حصري وخالٍ من حقوق الملكية لاستخدام ونسخ وتعديل ونشر وعرض هذا المحتوى.</li>
+        <li>توافق على أن المحتوى الخاص بك سيخضع لمستوى معقول من المراقبة وقد يتم إزالته إذا اعتبرناه مخالفًا لهذه السياسة.</li>
+      </ul>
+      
+      <h3>احترام حقوق الآخرين</h3>
+      <p>
+        يجب عليك احترام حقوق وكرامة مستخدمي موقعنا الآخرين. لا تقم بالتحرش أو الترهيب أو المضايقة أو التمييز ضد أي شخص.
+      </p>
+      <p>
+        احترم الخصوصية وعدم الكشف عن المعلومات الشخصية التي قد تصل إليها من خلال استخدام الموقع.
+      </p>
+      
+      <h3>الإبلاغ عن انتهاكات</h3>
+      <p>
+        إذا لاحظت أي محتوى أو سلوك ينتهك هذه السياسة، يرجى إبلاغنا على الفور عن طريق إرسال بريد إلكتروني إلى:
+        Kywns5943@gmail.com
+      </p>
+      <p>
+        سنقوم بمراجعة جميع التقارير وسنتخذ الإجراءات المناسبة، والتي قد تشمل إزالة المحتوى المخالف
+        وتعليق أو إنهاء حساب المستخدم المخالف.
+      </p>
+      
+      <h3>التعديلات على السياسة</h3>
+      <p>
+        نحتفظ بالحق في تعديل هذه السياسة في أي وقت. سيتم نشر النسخة المحدثة على هذه الصفحة مع تاريخ التحديث.
+        استمرارك في استخدام الموقع بعد نشر أي تغييرات يعني موافقتك على السياسة المعدلة.
+      </p>
+      
+      <h3>اتصل بنا</h3>
+      <p>
+        إذا كان لديك أي أسئلة حول سياسة الاستخدام المقبول هذه، يمكنك التواصل معنا على:
+      </p>
+      <ul>
+        <li>البريد الإلكتروني: Kywns5943@gmail.com</li>
+        <li>رقم الهاتف: 01140427665</li>
+        <li>العنوان: محافظة المنيا – مركز سمالوط</li>
+      </ul>
+      
+      <div class="update-date">
+        تم تحديث هذه السياسة آخر مرة في: 1 يناير 2025
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">تنظيم</div>
+      <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="contact.html">اتصل بنا</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">الشروط والأحكام</a>
+        <a href="acceptable-use.html">سياسة الاستخدام المقبول</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" title="Facebook">FB</a>
+        <a href="#" title="Twitter/X">X</a>
+        <a href="#" title="Instagram">IG</a>
+        <a href="#" title="YouTube">YT</a>
+      </div>
+      <div class="footer-info">
+        © 2025 تنظيم. جميع الحقوق محفوظة.
+      </div>
+    </div>
+    <div class="footer-stars"></div>
+  </footer>
+</body>
+</html>
+

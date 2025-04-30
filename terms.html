@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الشروط والأحكام - تنظيم</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="responsive.css">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      color: #eee;
+      background: linear-gradient(145deg, #0f1331, #42275a);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff20' fill-opacity='0.1'%3E%3Cpath d='M10 0h5v5h-5zM25 5h5v5h-5zM0 20h5v5H0zM15 30h5v5h-5z'/ %3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.04;
+      z-index: 0;
+    }
+
+    header {
+      background: rgba(14, 12, 40, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header div {
+      font-family: 'Amiri', serif;
+      font-size: 1.6em;
+      color: gold;
+      text-shadow: 0 0 6px #ff0;
+    }
+
+    header nav a {
+      margin-left: 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    header nav a:hover {
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .page-title {
+      color: gold;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .page-title::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: gold;
+      margin: 10px auto;
+      border-radius: 3px;
+    }
+
+    .terms-section {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      padding: 30px;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .terms-section h2 {
+      color: #fff;
+      margin-top: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+    }
+
+    .terms-section p {
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .terms-section h3 {
+      color: gold;
+      margin-top: 30px;
+    }
+
+    .terms-section ul, .terms-section ol {
+      padding-right: 20px;
+      line-height: 1.7;
+    }
+
+    .terms-section li {
+      margin-bottom: 10px;
+    }
+
+    .update-date {
+      text-align: center;
+      margin-top: 40px;
+      color: #aaa;
+      font-style: italic;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer Styles */
+    .site-footer {
+      background: rgba(14, 12, 40, 0.9);
+      color: #ccc;
+      text-align: center;
+      padding: 30px 15px;
+      font-size: 0.9em;
+      position: relative;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Amiri', serif;
+      font-size: 1.8em;
+      color: gold;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #ff0;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      padding: 5px 10px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .footer-links a:hover {
+      background: rgba(255,255,255,0.15);
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .footer-info {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      color: white;
+      transition: 0.3s;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    .footer-social a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 15px;
+      }
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>تنظيم</strong></div>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">اتصل بنا</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1 class="page-title">الشروط والأحكام</h1>
+    
+    <div class="terms-section">
+      <h2>مرحباً بك في شروط وأحكام موقع "تنظيم"</h2>
+      <p>
+        يرجى قراءة هذه الشروط والأحكام بعناية قبل استخدام موقع "تنظيم". باستخدامك للموقع، فإنك توافق
+        على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على أي جزء من هذه الشروط، يرجى عدم استخدام موقعنا.
+      </p>
+      
+      <h3>1. شروط الاستخدام</h3>
+      <ol>
+        <li>
+          يجب أن يكون عمرك 13 عامًا على الأقل لاستخدام هذا الموقع. إذا كنت أقل من 18 عامًا، يجب أن تستخدم
+          هذا الموقع بإشراف وموافقة والديك أو الوصي القانوني.
+        </li>
+        <li>
+          أنت تتحمل مسؤولية الحفاظ على سرية أي معلومات للحساب، بما في ذلك كلمة المرور، وأنت مسؤول بالكامل
+          عن جميع الأنشطة التي تحدث تحت حسابك.
+        </li>
+        <li>
+          نحتفظ بالحق في تعديل أو إنهاء الخدمة لأي سبب وبدون إشعار، في أي وقت.
+        </li>
+      </ol>
+      
+      <h3>2. حقوق الملكية الفكرية</h3>
+      <p>
+        جميع المحتويات الموجودة على موقع "تنظيم"، بما في ذلك النصوص والرسومات والشعارات والصور ومقاطع الفيديو
+        والبرامج، هي ملكية لنا أو لمانحي التراخيص لدينا، ومحمية بموجب قوانين حقوق النشر والعلامات التجارية
+        وغيرها من قوانين الملكية الفكرية.
+      </p>
+      <p>
+        لا يُمنح أي ترخيص أو حق في أي من حقوق الملكية الفكرية هذه من خلال استخدامك للموقع. أي استخدام غير
+        مصرح به للمحتوى قد ينتهك قوانين حقوق النشر والعلامات التجارية والقوانين الأخرى.
+      </p>
+      
+      <h3>3. استخدام المحتوى</h3>
+      <p>
+        يمكنك عرض وتنزيل نسخة واحدة من أي محتوى على موقعنا للاستخدام الشخصي غير التجاري فقط. لا يجوز لك:
+      </p>
+      <ul>
+        <li>إعادة إنتاج أو بيع أو نشر أي محتوى من الموقع.</li>
+        <li>تعديل أو إنشاء أعمال مشتقة من المحتوى.</li>
+        <li>إزالة أي حقوق نشر أو إشعارات ملكية أخرى من المواد.</li>
+        <li>استخدام المحتوى لأي غرض تجاري دون الحصول على إذن مسبق منا.</li>
+      </ul>
+      
+      <h3>4. سلوك المستخدم</h3>
+      <p>عند استخدام موقعنا، أنت توافق على عدم:</p>
+      <ul>
+        <li>انتهاك أي قانون أو لوائح محلية أو دولية.</li>
+        <li>استخدام الموقع بطريقة قد تؤدي إلى تعطيله أو إتلافه أو الحد من فعاليته.</li>
+        <li>نشر أو إرسال أي محتوى غير قانوني أو ضار أو تهديدي أو مسيء أو تشهيري أو فاحش أو بذيء.</li>
+        <li>جمع أو جمع بيانات شخصية عن مستخدمين آخرين.</li>
+        <li>محاولة الوصول غير المصرح به إلى أي جزء من الموقع أو الخوادم أو الأنظمة المرتبطة بالموقع.</li>
+      </ul>
+      
+      <h3>5. الإعلانات وروابط الطرف الثالث</h3>
+      <p>
+        قد يحتوي موقعنا على إعلانات وروابط لمواقع ويب أو موارد أخرى. نحن لسنا مسؤولين عن توفر هذه المواقع
+        الخارجية أو الموارد، ولا نقر أو نتحمل المسؤولية عن أي محتوى أو منتجات أو خدمات موجودة عليها.
+      </p>
+      
+      <h3>6. إخلاء المسؤولية</h3>
+      <p>
+        يتم توفير موقعنا "كما هو" و"كما هو متاح" دون أي ضمانات من أي نوع، صريحة أو ضمنية. نحن لا نضمن
+        أن موقعنا سيكون آمنًا أو خاليًا من الأخطاء أو الفيروسات.
+      </p>
+      <p>
+        المعلومات المقدمة على موقعنا مخصصة للأغراض العامة فقط ولا ينبغي الاعتماد عليها أو استخدامها كأساس
+        لاتخاذ أي قرارات. أنت تستخدم المعلومات المقدمة على مسؤوليتك الخاصة.
+      </p>
+      
+      <h3>7. تحديد المسؤولية</h3>
+      <p>
+        لن نكون مسؤولين تحت أي ظرف من الظروف عن أي أضرار مباشرة أو غير مباشرة أو عرضية أو خاصة أو تبعية
+        (حتى إذا تم إخطارنا باحتمال حدوث مثل هذه الأضرار) الناشئة عن استخدامك لموقعنا أو عدم القدرة على استخدامه.
+      </p>
+      
+      <h3>8. التعويض</h3>
+      <p>
+        أنت توافق على تعويضنا وحمايتنا ودفاعنا ضد أي مطالبات أو طلبات أو التزامات أو نفقات أو أضرار،
+        بما في ذلك أتعاب المحاماة المعقولة، الناشئة عن خرقك لهذه الشروط والأحكام أو القوانين أو حقوق طرف ثالث.
+      </p>
+      
+      <h3>9. التعديلات</h3>
+      <p>
+        نحتفظ بالحق في تعديل هذه الشروط والأحكام في أي وقت. سيتم نشر الشروط المحدثة على هذه الصفحة.
+        استمرارك في استخدام الموقع بعد إجراء أي تغييرات يعني موافقتك على الشروط الجديدة.
+      </p>
+      
+      <h3>10. القانون الحاكم</h3>
+      <p>
+        تخضع هذه الشروط والأحكام وتفسر وفقًا لقوانين جمهورية مصر العربية، ويوافق الطرفان على الخضوع للاختصاص
+        القضائي الحصري للمحاكم المصرية.
+      </p>
+      
+      <h3>11. اتصل بنا</h3>
+      <p>
+        إذا كان لديك أي أسئلة حول هذه الشروط والأحكام، يمكنك التواصل معنا على:
+      </p>
+      <ul>
+        <li>البريد الإلكتروني: Kywns5943@gmail.com</li>
+        <li>رقم الهاتف: 01140427665</li>
+        <li>العنوان: محافظة المنيا – مركز سمالوط</li>
+      </ul>
+      
+      <div class="update-date">
+        تم تحديث هذه الشروط والأحكام آخر مرة في: 1 يناير 2025
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">تنظيم</div>
+      <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="contact.html">اتصل بنا</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">الشروط والأحكام</a>
+        <a href="acceptable-use.html">سياسة الاستخدام المقبول</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" title="Facebook">FB</a>
+        <a href="#" title="Twitter/X">X</a>
+        <a href="#" title="Instagram">IG</a>
+        <a href="#" title="YouTube">YT</a>
+      </div>
+      <div class="footer-info">
+        © 2025 تنظيم. جميع الحقوق محفوظة.
+      </div>
+    </div>
+    <div class="footer-stars"></div>
+  </footer>
+</body>
+</html>
+

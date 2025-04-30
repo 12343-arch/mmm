@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>اتصل بنا - تنظيم</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="responsive.css">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      color: #eee;
+      background: linear-gradient(145deg, #0f1331, #42275a);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff20' fill-opacity='0.1'%3E%3Cpath d='M10 0h5v5h-5zM25 5h5v5h-5zM0 20h5v5H0zM15 30h5v5h-5z'/ %3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.04;
+      z-index: 0;
+    }
+
+    header {
+      background: rgba(14, 12, 40, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header div {
+      font-family: 'Amiri', serif;
+      font-size: 1.6em;
+      color: gold;
+      text-shadow: 0 0 6px #ff0;
+    }
+
+    header nav a {
+      margin-left: 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    header nav a:hover {
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .page-title {
+      color: gold;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .page-title::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: gold;
+      margin: 10px auto;
+      border-radius: 3px;
+    }
+
+    .contact-section {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      padding: 30px;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .contact-intro {
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-icon {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: gold;
+    }
+
+    .contact-label {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .contact-value {
+      color: #ddd;
+    }
+
+    .contact-form {
+      margin-top: 40px;
+    }
+
+    .form-title {
+      color: gold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      color: white;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: linear-gradient(45deg, #f57c00, #fbc02d);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 25px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      transition: transform 0.2s, box-shadow 0.3s;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer Styles */
+    .site-footer {
+      background: rgba(14, 12, 40, 0.9);
+      color: #ccc;
+      text-align: center;
+      padding: 30px 15px;
+      font-size: 0.9em;
+      position: relative;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Amiri', serif;
+      font-size: 1.8em;
+      color: gold;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #ff0;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      padding: 5px 10px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .footer-links a:hover {
+      background: rgba(255,255,255,0.15);
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .footer-info {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      color: white;
+      transition: 0.3s;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    .footer-social a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 15px;
+      }
+      .contact-methods {
+        grid-template-columns: 1fr;
+      }
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>تنظيم</strong></div>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">اتصل بنا</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1 class="page-title">اتصل بنا</h1>
+    
+    <div class="contact-section">
+      <div class="contact-intro">
+        <p>نحن نرحب دائماً بأسئلتكم واقتراحاتكم وملاحظاتكم. يمكنكم التواصل معنا من خلال أي من الوسائل التالية:</p>
+      </div>
+      
+      <div class="contact-methods">
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <div class="contact-label">رقم الهاتف</div>
+          <div class="contact-value">01140427665</div>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <div class="contact-label">البريد الإلكتروني</div>
+          <div class="contact-value">Kywns5943@gmail.com</div>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <div class="contact-label">العنوان</div>
+          <div class="contact-value">محافظة المنيا – مركز سمالوط</div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <h2 class="form-title">أرسل رسالة مباشرة</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">الاسم الكامل</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">رقم الهاتف (اختياري)</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">الموضوع</label>
+            <select id="subject" name="subject" required>
+              <option value="">-- اختر الموضوع --</option>
+              <option value="استفسار">استفسار</option>
+              <option value="اقتراح">اقتراح</option>
+              <option value="مشكلة تقنية">مشكلة تقنية</option>
+              <option value="تعاون">تعاون</option>
+              <option value="أخرى">أخرى</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">الرسالة</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">إرسال الرسالة</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">تنظيم</div>
+      <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="contact.html">اتصل بنا</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">الشروط والأحكام</a>
+        <a href="acceptable-use.html">سياسة الاستخدام المقبول</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" title="Facebook">FB</a>
+        <a href="#" title="Twitter/X">X</a>
+        <a href="#" title="Instagram">IG</a>
+        <a href="#" title="YouTube">YT</a>
+      </div>
+      <div class="footer-info">
+        © 2025 تنظيم. جميع الحقوق محفوظة.
+      </div>
+    </div>
+    <div class="footer-stars"></div>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('تم إرسال رسالتك بنجاح! سنقوم بالرد عليك في أقرب وقت ممكن.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
+

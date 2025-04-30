@@ -1,0 +1,196 @@
+/* Achievement Category Styles */
+.achievement-category {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.category-title {
+  color: gold;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+  padding-bottom: 10px;
+}
+
+.achievement-progress {
+  background: rgba(255, 255, 255, 0.1);
+  height: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #4CAF50, #81C784);
+  transition: width 0.5s ease;
+}
+
+.unlock-details {
+  margin-top: 10px;
+  background: rgba(76, 175, 80, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.reward-info {
+  color: #ddd;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.achievement-popup-content .reward-reveal {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Locked Achievement Styling */
+.achievement-item.locked {
+  opacity: 0.7;
+  filter: grayscale(100%);
+  position: relative; /* For lock overlay positioning */
+  cursor: not-allowed;
+}
+
+.achievement-item.locked .achievement-icon.locked-icon::before {
+  content: "🔒"; /* Unicode lock symbol */
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ccc; /* Adjust lock color as needed */
+  text-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+
+.achievement-item.locked .achievement-icon {
+  position: relative; /* To contain the pseudo-element lock */
+  overflow: hidden; /* Clip icon corners if needed */
+  border-radius: 50%; /* Keep icon round */
+}
+
+/* Celebration Animation Styles */
+.celebration-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1001; /* Ensure it's on top */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confetti {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: gold; /* Confetti color */
+  border-radius: 50%;
+  top: -10%;
+  animation: confetti-fall 5s linear infinite,
+             confetti-rotate 5s linear infinite;
+  opacity: 0; /* Start invisible, fade in with animation */
+  animation-delay: 0.5s; /* Small delay for staggered effect */
+}
+
+.achievement-unlock-popup {
+  background: rgba(20, 20, 40, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.7);
+  z-index: 1002; /* Above confetti */
+  animation: popup-scale 0.5s ease-out forwards;
+  transform: scale(0.5); /* Start smaller, scale up with animation */
+  opacity: 0; /* Fade in with animation */
+}
+
+.achievement-unlock-popup h2 {
+  color: gold;
+  margin-top: 0;
+  text-shadow: 0 0 8px #ff0;
+}
+
+.achievement-unlock-popup h3 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.achievement-unlock-popup .achievement-icon {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
+.achievement-unlock-popup .reward-text {
+  color: #eee;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(120vh);
+    opacity: 1; /* Fade in by the end of fall */
+  }
+}
+
+@keyframes confetti-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes popup-scale {
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Add to media queries for all components */
+@media (max-width: 600px) {
+  .achievement-crystal {
+    right: 80px;
+    height: 160px;
+    right: 10px;
+  }
+
+  .focus-room-btn {
+    font-size: 0.9em;
+    padding: 8px 12px;
+  }
+}
+
+/* Add error prevention */
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+input, textarea {
+  user-select: text;
+}
+
+/* Motion reduction */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
